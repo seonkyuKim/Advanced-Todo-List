@@ -1,25 +1,5 @@
-import { compareNumberWithEmptyString, compareString } from '../models/Todo';
+import { compareString } from '../models/Todo';
 
-describe("Test compareNumberWithEmptyString Function", () => {
-  it("a가 빈 문자열일 때, compare(a, b) 결과가 양수여야 함 ", async () => {
-    const a = "";
-    const b = 3;
-    expect(compareNumberWithEmptyString(a, b)).toBeGreaterThan(0);
-  })
-
-  it("b가 빈 문자열일 때, compare(a, b) 결과가 음수여야 함", async () => {
-    const a = 3;
-    const b = "";
-    expect(compareNumberWithEmptyString(a, b)).toBeLessThan(0);
-  })
-
-  it("a가 빈 문자열 b가 빈 문자열일 때, compare(a, b) 결과가 0이여야 함", async () => {
-    const a = "";
-    const b = "";
-    expect(compareNumberWithEmptyString(a, b)).toBe(0);
-  })
-
-});
 
 describe("Test compareString Function", () => {
   it("a가 빈 문자열일 때, compare(a, b) 결과가 양수가 나와야 함 ", async () => {

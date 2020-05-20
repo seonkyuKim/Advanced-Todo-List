@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useReducer, useContext } from "react";
-import { ABCDETodo, numberWithEmptyString } from "../models/Todo";
+import { ABCDETodo } from "../models/Todo";
 
 type ABCDETodosState = ABCDETodo[];
 
@@ -12,7 +12,8 @@ type Action =
   | { type: "TOGGLE"; id: number }
   | { type: "REMOVE"; id: number }
   | { type: "UPDATELETTER"; id: number; value: string }
-  | { type: "UPDATENUMBER"; id: number; value: numberWithEmptyString };
+  | { type: "UPDATENUMBER"; id: number; value: string }
+  | { type: "UPDATETEXT"; id: number; value: string }
 
 type ABCDETodosDispatch = Dispatch<Action>;
 
@@ -51,6 +52,13 @@ function todosReducer(state: ABCDETodosState, action: Action): ABCDETodosState {
       return state.map(todo =>
         todo.id === action.id
           ? { ...todo, importanceNumber: action.value }
+          : todo
+      );
+
+    case "UPDATETEXT":
+      return state.map(todo =>
+        todo.id === action.id
+          ? { ...todo, text: action.value }
           : todo
       );
 
